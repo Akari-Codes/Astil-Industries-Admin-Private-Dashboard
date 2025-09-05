@@ -1,0 +1,50 @@
+<style>
+    
+</style>
+<title>Login to Private Dashboard</title>
+<p>Username</p>
+<input id="username" type="username" placeholder="Enter Username"></input>
+<p>Password</p>
+<input id="password" type="password" placeholder="Enter Password"></input>
+<br>
+<p id="temp"></p>
+<button onclick="login()">Login</button>
+
+<script>
+    function next_login(username) {
+        window.location.replace("user/" + username + "/dash/");
+    }
+    function login() {
+        username = document.getElementById('username').value;
+        password = document.getElementById('password').value;
+        try{
+        fetch('https://priv-dash.astil-industries.com/' + username + '.pasd')
+        .then(response => response.text())
+        .then((data) => {
+            var pass = data });
+        if(password == pass) {save_login(username, password);next_login(username);} else {document.getElementById('alert').innerHTML = "Failed to Login Username or Password is Incorrect"};
+    }
+    catch (error) {
+        document.getElementById('alert').innerHTML = "Failed to Login Username or Password is Incorrect"
+    };
+}
+    
+    function check_cookies() {
+    try {
+        username = getCookie("username");
+        password = getCookie("password");
+        fetch('https://priv-dash.astil-industries.com/' + username + '.pasd')
+        .then(response => response.text())
+        .then((data) => {
+            var pass = data });
+    } catch (error) {
+        console.log("no_cookies");
+    };
+    }
+    function save_login(username, password) {
+    document.cookie = "username=" + username;
+    document.cookie = "password=" + password;
+    return
+    }
+check_cookies()
+</script>
