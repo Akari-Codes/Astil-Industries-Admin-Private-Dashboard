@@ -27,14 +27,28 @@
         var username = document.getCookie("username");
         var password = document.getCookie("password");
         const pass = ["AkariGames_VT6996","AshBrown2011"];
-        if(username == "Akari") {let x = 0};
-        if(username == "Ashley") {let x = 1};
-        if(password == pass[x]) {window.lcoation.replace("user/" + username + "/dash/")};
+        if(username == "Akari") {let x = 0;if(password == pass[x]) {window.lcoation.replace("user/" + username + "/dash/")};};
+        if(username == "Ashley") {let x = 1;if(password == pass[x]) {window.lcoation.replace("user/" + username + "/dash/")};};
     }
     function save_login(username, password) {
     document.cookie = "username=" + username;
     document.cookie = "password=" + password;
     return
     }
+    function getCookie(cname) {
+  let name = cname + "=";
+  let decodedCookie = decodeURIComponent(document.cookie);
+  let ca = decodedCookie.split(';');
+  for(let i = 0; i <ca.length; i++) {
+    let c = ca[i];
+    while (c.charAt(0) == ' ') {
+      c = c.substring(1);
+    }
+    if (c.indexOf(name) == 0) {
+      return c.substring(name.length, c.length);
+    }
+  }
+  return "";
+}
 check_cookies()
 </script>
