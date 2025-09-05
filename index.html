@@ -24,8 +24,8 @@
     }
     
     function check_cookies() {
-        var username = document.getCookie("username");
-        var password = document.getCookie("password");
+        var username = getCookie("username");
+        var password = getCookie("password");
         const pass = ["AkariGames_VT6996","AshBrown2011"];
         if(username == "Akari") {let x = 0;if(password == pass[x]) {window.lcoation.replace("user/" + username + "/dash/")};};
         if(username == "Ashley") {let x = 1;if(password == pass[x]) {window.lcoation.replace("user/" + username + "/dash/")};};
