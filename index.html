@@ -7,7 +7,7 @@
 <p>Password</p>
 <input id="password" type="password" placeholder="Enter Password"></input>
 <br>
-<p id="alert"></p>
+<p id="temp"></p>
 <button onclick="login()">Login</button>
 
 <script>
@@ -15,8 +15,8 @@
         window.location.replace("user/" + username + "/dash/");
     }
     function login() {
-        username = document.getElementById('username').value;
-        password = document.getElementById('password').value;
+        var username = document.getElementById('username').value;
+        var password = document.getElementById('password').value;
         try{
         fetch('https://priv-dash.astil-industries.com/' + username + '.pasd')
         .then(response => response.text())
@@ -31,12 +31,13 @@
     
     function check_cookies() {
     try {
-        username = getCookie("username");
-        password = getCookie("password");
+        var username = getCookie("username");
+        var password = getCookie("password");
         fetch('https://priv-dash.astil-industries.com/' + username + '.pasd')
         .then(response => response.text())
         .then((data) => {
             var pass = data });
+        if(password == pass) {window.lcoation.replace("user/" + username + "/dash/")}
     } catch (error) {
         console.log("no_cookies");
     };
